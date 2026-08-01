@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A love story written in stars — a personal interactive journey, made just for you." />
+  <title>Through Our Stars ✨</title>
+
+  <!-- Preconnect for fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/themes.css" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  PRELOADER                                              -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div id="preloader" role="status" aria-label="Loading your special experience">
+    <canvas id="preloader-canvas"></canvas>
+    <div class="preloader-content">
+      <div class="preloader-heart">
+        <svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
+          <path id="heart-path" d="M50 85 C50 85 5 55 5 28 C5 14 16 5 28 5 C37 5 45 10 50 18 C55 10 63 5 72 5 C84 5 95 14 95 28 C95 55 50 85 50 85Z"/>
+        </svg>
+      </div>
+      <p class="preloader-text">Gathering stardust<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
+      <div class="preloader-bar-wrap">
+        <div class="preloader-bar" id="preloader-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  AUDIO CONTROLS                                         -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div id="audio-controls" class="audio-controls hidden" aria-label="Music controls">
+    <button id="audio-toggle-btn" class="audio-btn" aria-label="Toggle music" title="Toggle Music">
+      <span class="audio-icon">♪</span>
+    </button>
+    <div class="audio-label">Music</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  ACHIEVEMENT TOAST                                      -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div id="achievement-toast" class="achievement-toast hidden" role="alert" aria-live="assertive">
+    <div class="achievement-icon">⭐</div>
+    <div class="achievement-info">
+      <div class="achievement-title">Achievement Unlocked!</div>
+      <div class="achievement-name" id="achievement-name"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  ACHIEVEMENTS PANEL                                     -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div id="achievements-panel" class="achievements-panel hidden" role="dialog" aria-label="Achievements" aria-modal="true">
+    <div class="achievements-panel-inner">
+      <button class="close-panel-btn" id="close-achievements" aria-label="Close achievements">✕</button>
+      <h2 class="panel-title">✨ Your Journey</h2>
+      <p class="panel-subtitle">Stars collected along the way</p>
+      <div id="achievements-grid" class="achievements-grid"></div>
+    </div>
+  </div>
+  <div id="achievements-overlay" class="panel-overlay hidden"></div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  SCREEN: INTRO                                          -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="screen-intro" class="screen active" data-screen="intro">
+    <canvas id="star-canvas"></canvas>
+    <div class="intro-content">
+      <div class="intro-envelope" id="intro-envelope">
+        <div class="envelope-flap"></div>
+        <div class="envelope-body">
+          <div class="envelope-letter" id="envelope-letter">
+            <div class="letter-inner">
+              <div class="letter-salutation">To my favourite person in the universe,</div>
+              <div class="letter-body" id="typewriter-text"></div>
+              <div class="letter-signature hidden" id="letter-signature">
+                <span>With all my stars,</span>
+                <span class="signature-name">Your love 💫</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button id="begin-journey-btn" class="btn-primary hidden" aria-label="Begin your journey through the stars">
+        Begin Our Journey ✨
+      </button>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  SCREEN: STAR MAP (Hub)                                 -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="screen-starmap" class="screen hidden" data-screen="starmap">
+    <canvas id="starmap-canvas"></canvas>
+    <div class="starmap-ui">
+      <div class="starmap-header">
+        <h1 class="starmap-title">Through Our Stars</h1>
+        <p class="starmap-subtitle">Choose a constellation to explore</p>
+      </div>
+
+      <div class="constellation-map" id="constellation-map">
+
+        <!-- Chapter 1: The Moment We Met -->
+        <div class="constellation-node" id="node-1" data-chapter="1" style="top:20%; left:15%;" tabindex="0" role="button" aria-label="Chapter 1: The Moment We Met">
+          <div class="node-star active"></div>
+          <div class="node-glow"></div>
+          <div class="node-label">
+            <div class="node-number">I</div>
+            <div class="node-title">The Moment We Met</div>
+            <div class="node-status" id="status-1">Explore →</div>
+          </div>
+          <div class="node-constellation c1">
+            <svg viewBox="0 0 120 120" class="constellation-svg">
+              <line x1="60" y1="20" x2="30" y2="60" class="star-line"/>
+              <line x1="30" y1="60" x2="60" y2="90" class="star-line"/>
+              <line x1="60" y1="90" x2="90" y2="60" class="star-line"/>
+              <line x1="90" y1="60" x2="60" y2="20" class="star-line"/>
+              <circle cx="60" cy="20" r="3" class="star-dot"/>
+              <circle cx="30" cy="60" r="3" class="star-dot"/>
+              <circle cx="60" cy="90" r="3" class="star-dot"/>
+              <circle cx="90" cy="60" r="3" class="star-dot"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Chapter 2: Little Things -->
+        <div class="constellation-node locked" id="node-2" data-chapter="2" style="top:15%; left:45%;" tabindex="0" role="button" aria-label="Chapter 2: The Little Things">
+          <div class="node-star"></div>
+          <div class="node-glow"></div>
+          <div class="node-label">
+            <div class="node-number">II</div>
+            <div class="node-title">The Little Things</div>
+            <div class="node-status" id="status-2">🔒 Locked</div>
+          </div>
+          <div class="node-constellation c2">
+            <svg viewBox="0 0 120 120" class="constellation-svg">
+              <line x1="20" y1="60" x2="50" y2="30" class="star-line"/>
+              <line x1="50" y1="30" x2="100" y2="40" class="star-line"/>
+              <line x1="100" y1="40" x2="80" y2="80" class="star-line"/>
+              <line x1="80" y1="80" x2="40" y2="90" class="star-line"/>
+              <circle cx="20" cy="60" r="3" class="star-dot"/>
+              <circle cx="50" cy="30" r="3" class="star-dot"/>
+              <circle cx="100" cy="40" r="3" class="star-dot"/>
+              <circle cx="80" cy="80" r="3" class="star-dot"/>
+              <circle cx="40" cy="90" r="3" class="star-dot"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Chapter 3: Our Memories -->
+        <div class="constellation-node locked" id="node-3" data-chapter="3" style="top:40%; left:70%;" tabindex="0" role="button" aria-label="Chapter 3: Our Memories">
+          <div class="node-star"></div>
+          <div class="node-glow"></div>
+          <div class="node-label">
+            <div class="node-number">III</div>
+            <div class="node-title">Our Memories</div>
+            <div class="node-status" id="status-3">🔒 Locked</div>
+          </div>
+          <div class="node-constellation c3">
+            <svg viewBox="0 0 120 120" class="constellation-svg">
+              <line x1="60" y1="10" x2="100" y2="50" class="star-line"/>
+              <line x1="100" y1="50" x2="60" y2="110" class="star-line"/>
+              <line x1="60" y1="110" x2="20" y2="50" class="star-line"/>
+              <line x1="20" y1="50" x2="60" y2="10" class="star-line"/>
+              <line x1="60" y1="10" x2="60" y2="110" class="star-line"/>
+              <circle cx="60" cy="10" r="3" class="star-dot"/>
+              <circle cx="100" cy="50" r="3" class="star-dot"/>
+              <circle cx="60" cy="110" r="3" class="star-dot"/>
+              <circle cx="20" cy="50" r="3" class="star-dot"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Chapter 4: Secret Garden -->
+        <div class="constellation-node locked" id="node-4" data-chapter="4" style="top:60%; left:25%;" tabindex="0" role="button" aria-label="Chapter 4: The Secret Garden">
+          <div class="node-star"></div>
+          <div class="node-glow"></div>
+          <div class="node-label">
+            <div class="node-number">IV</div>
+            <div class="node-title">The Secret Garden</div>
+            <div class="node-status" id="status-4">🔒 Locked</div>
+          </div>
+          <div class="node-constellation c4">
+            <svg viewBox="0 0 120 120" class="constellation-svg">
+              <line x1="60" y1="20" x2="80" y2="60" class="star-line"/>
+              <line x1="80" y1="60" x2="60" y2="100" class="star-line"/>
+              <line x1="60" y1="100" x2="40" y2="60" class="star-line"/>
+              <line x1="40" y1="60" x2="60" y2="20" class="star-line"/>
+              <line x1="40" y1="60" x2="80" y2="60" class="star-line"/>
+              <circle cx="60" cy="20" r="3" class="star-dot"/>
+              <circle cx="80" cy="60" r="3" class="star-dot"/>
+              <circle cx="60" cy="100" r="3" class="star-dot"/>
+              <circle cx="40" cy="60" r="3" class="star-dot"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Chapter 5: What I Love About You -->
+        <div class="constellation-node locked" id="node-5" data-chapter="5" style="top:65%; left:60%;" tabindex="0" role="button" aria-label="Chapter 5: What I Love About You">
+          <div class="node-star"></div>
+          <div class="node-glow"></div>
+          <div class="node-label">
+            <div class="node-number">V</div>
+            <div class="node-title">What I Love About You</div>
+            <div class="node-status" id="status-5">🔒 Locked</div>
+          </div>
+          <div class="node-constellation c5">
+            <svg viewBox="0 0 120 120" class="constellation-svg">
+              <line x1="60" y1="20" x2="30" y2="50" class="star-line"/>
+              <line x1="30" y1="50" x2="50" y2="90" class="star-line"/>
+              <line x1="50" y1="90" x2="70" y2="90" class="star-line"/>
+              <line x1="70" y1="90" x2="90" y2="50" class="star-line"/>
+              <line x1="90" y1="50" x2="60" y2="20" class="star-line"/>
+              <circle cx="60" cy="20" r="3" class="star-dot"/>
+              <circle cx="30" cy="50" r="3" class="star-dot"/>
+              <circle cx="50" cy="90" r="3" class="star-dot"/>
+              <circle cx="70" cy="90" r="3" class="star-dot"/>
+              <circle cx="90" cy="50" r="3" class="star-dot"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Chapter 6: Forever -->
+        <div class="constellation-node locked" id="node-6" data-chapter="6" style="top:40%; left:42%;" tabindex="0" role="button" aria-label="Chapter 6: Forever">
+          <div class="node-star"></div>
+          <div class="node-glow"></div>
+          <div class="node-label">
+            <div class="node-number">∞</div>
+            <div class="node-title">Forever</div>
+            <div class="node-status" id="status-6">🔒 Locked</div>
+          </div>
+          <div class="node-constellation c6">
+            <svg viewBox="0 0 120 120" class="constellation-svg">
+              <line x1="60" y1="15" x2="85" y2="35" class="star-line"/>
+              <line x1="85" y1="35" x2="105" y2="60" class="star-line"/>
+              <line x1="105" y1="60" x2="85" y2="85" class="star-line"/>
+              <line x1="85" y1="85" x2="60" y2="105" class="star-line"/>
+              <line x1="60" y1="105" x2="35" y2="85" class="star-line"/>
+              <line x1="35" y1="85" x2="15" y2="60" class="star-line"/>
+              <line x1="15" y1="60" x2="35" y2="35" class="star-line"/>
+              <line x1="35" y1="35" x2="60" y2="15" class="star-line"/>
+              <circle cx="60" cy="15" r="4" class="star-dot"/>
+              <circle cx="85" cy="35" r="3" class="star-dot"/>
+              <circle cx="105" cy="60" r="3" class="star-dot"/>
+              <circle cx="85" cy="85" r="3" class="star-dot"/>
+              <circle cx="60" cy="105" r="4" class="star-dot"/>
+              <circle cx="35" cy="85" r="3" class="star-dot"/>
+              <circle cx="15" cy="60" r="3" class="star-dot"/>
+              <circle cx="35" cy="35" r="3" class="star-dot"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Connecting lines between nodes -->
+        <svg id="map-lines" class="map-lines" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <line class="map-line" id="line-1-2" x1="15" y1="20" x2="45" y2="15"/>
+          <line class="map-line" id="line-2-3" x1="45" y1="15" x2="70" y2="40"/>
+          <line class="map-line" id="line-3-6" x1="70" y1="40" x2="42" y2="40"/>
+          <line class="map-line" id="line-6-4" x1="42" y1="40" x2="25" y2="60"/>
+          <line class="map-line" id="line-4-5" x1="25" y1="60" x2="60" y2="65"/>
+          <line class="map-line" id="line-5-6" x1="60" y1="65" x2="42" y2="40"/>
+        </svg>
+      </div>
+
+      <!-- Achievements & Progress -->
+      <div class="starmap-footer">
+        <button id="show-achievements-btn" class="footer-btn" aria-label="View your achievements">
+          ⭐ <span id="achievement-count">0</span> Stars Collected
+        </button>
+        <div class="progress-stars" id="progress-stars" aria-label="Progress">
+          <span class="pstar" id="pstar-1">☆</span>
+          <span class="pstar" id="pstar-2">☆</span>
+          <span class="pstar" id="pstar-3">☆</span>
+          <span class="pstar" id="pstar-4">☆</span>
+          <span class="pstar" id="pstar-5">☆</span>
+          <span class="pstar" id="pstar-6">☆</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  SCREEN: CHAPTER 1 — The Moment We Met                 -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="screen-chapter-1" class="screen chapter-screen hidden" data-screen="chapter-1">
+    <canvas class="chapter-bg-canvas" id="c1-canvas"></canvas>
+    <div class="chapter-container">
+      <div class="chapter-header">
+        <button class="back-to-map" aria-label="Return to star map">← Back to Stars</button>
+        <div class="chapter-badge">Chapter I</div>
+      </div>
+
+      <div class="story-book" id="story-book">
+        <div class="story-page active" id="c1-page-1">
+          <div class="page-art">
+            <div class="memory-scene" id="scene-coffee-shop">
+              <div class="scene-bg coffee-shop-bg"></div>
+              <div class="scene-character character-1" id="char-1">💁‍♀️</div>
+              <div class="scene-character character-2" id="char-2">🙋‍♂️</div>
+              <div class="scene-item coffee-cup">☕</div>
+              <div class="scene-sparkle" id="scene-sparkle-1">✨</div>
+            </div>
+          </div>
+          <div class="page-text">
+            <h2 class="page-title">The Moment We Met</h2>
+            <p class="page-story" id="c1-story-1"></p>
+          </div>
+          <button class="page-btn" id="c1-next-1" aria-label="Continue story">Continue ›</button>
+        </div>
+
+        <div class="story-page" id="c1-page-2">
+          <div class="page-text story-choice-intro">
+            <h2 class="page-title">A Question for You</h2>
+            <p class="page-story">Do you remember what you first thought when you saw me?</p>
+          </div>
+          <div class="choice-buttons" role="group" aria-label="Choose your answer">
+            <button class="choice-btn" id="c1-choice-1" data-choice="a" aria-label="I noticed your smile">
+              😊 "I noticed your smile first."
+            </button>
+            <button class="choice-btn" id="c1-choice-2" data-choice="b" aria-label="I felt nervous but happy">
+              🦋 "I felt a little nervous, but weirdly happy."
+            </button>
+            <button class="choice-btn" id="c1-choice-3" data-choice="c" aria-label="I hoped we would speak again">
+              🌟 "I secretly hoped we'd speak again."
+            </button>
+          </div>
+        </div>
+
+        <div class="story-page" id="c1-page-3">
+          <div class="page-art">
+            <div class="choice-response-art" id="choice-response-art"></div>
+          </div>
+          <div class="page-text">
+            <p class="page-story" id="c1-choice-response"></p>
+          </div>
+          <button class="page-btn" id="c1-next-3" aria-label="Continue">Continue ›</button>
+        </div>
+
+        <div class="story-page" id="c1-page-4">
+          <div class="full-page-letter">
+            <div class="letter-paper">
+              <div class="letter-content" id="c1-letter-content">
+                <p>I remember the exact moment I saw you.</p>
+                <p>Time did that strange thing — where it slows and speeds up at once.</p>
+                <p>I didn't know yet that you would become my favourite part of every day.</p>
+                <p>But something in me already hoped.</p>
+                <div class="letter-divider">— ✦ —</div>
+                <p class="letter-emphasis">That was the beginning of my favourite story.</p>
+              </div>
+              <div class="star-seal">⭐</div>
+            </div>
+          </div>
+          <button class="page-btn" id="c1-complete" aria-label="Complete this chapter">
+            ✨ A New Star Appears
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  SCREEN: CHAPTER 2 — The Little Things (Memory Match)  -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="screen-chapter-2" class="screen chapter-screen hidden" data-screen="chapter-2">
+    <canvas class="chapter-bg-canvas" id="c2-canvas"></canvas>
+    <div class="chapter-container">
+      <div class="chapter-header">
+        <button class="back-to-map" aria-label="Return to star map">← Back to Stars</button>
+        <div class="chapter-badge">Chapter II</div>
+      </div>
+
+      <div class="chapter-intro" id="c2-intro">
+        <h2 class="chapter-title">The Little Things</h2>
+        <p class="chapter-description">The little moments that made me fall for you, hidden in the stars.<br>Find the matching pairs to reveal each memory.</p>
+        <div class="chapter-icon">🌸</div>
+        <button class="page-btn" id="c2-start" aria-label="Start the memory game">Play ›</button>
+      </div>
+
+      <div class="memory-game hidden" id="memory-game">
+        <div class="game-header">
+          <div class="game-stat">
+            <span class="stat-label">Pairs Found</span>
+            <span class="stat-value" id="pairs-found">0/8</span>
+          </div>
+          <div class="game-stat">
+            <span class="stat-label">Moves</span>
+            <span class="stat-value" id="moves-count">0</span>
+          </div>
+        </div>
+        <div class="memory-grid" id="memory-grid" role="grid" aria-label="Memory matching game"></div>
+        <div class="game-complete hidden" id="game-complete">
+          <div class="complete-message">
+            <div class="complete-emoji">🌸</div>
+            <h3>You found them all!</h3>
+            <p id="complete-message-text"></p>
+            <button class="page-btn" id="c2-complete" aria-label="Complete this chapter">
+              ✨ A New Star Appears
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  SCREEN: CHAPTER 3 — Our Memories (Gallery)            -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="screen-chapter-3" class="screen chapter-screen hidden" data-screen="chapter-3">
+    <canvas class="chapter-bg-canvas" id="c3-canvas"></canvas>
+    <div class="chapter-container">
+      <div class="chapter-header">
+        <button class="back-to-map" aria-label="Return to star map">← Back to Stars</button>
+        <div class="chapter-badge">Chapter III</div>
+      </div>
+
+      <div class="chapter-intro" id="c3-intro">
+        <h2 class="chapter-title">Our Memories</h2>
+        <p class="chapter-description">A constellation of moments — click each star to reveal a memory.</p>
+        <div class="chapter-icon">📸</div>
+        <button class="page-btn" id="c3-start" aria-label="Explore memories">Explore ›</button>
+      </div>
+
+      <div class="memory-constellation hidden" id="memory-constellation">
+        <p class="constellation-hint">✨ Click each glowing star to reveal a memory</p>
+        <div class="memory-stars-container" id="memory-stars-container"></div>
+        <div class="memory-reveal-panel" id="memory-reveal-panel">
+          <div class="memory-card" id="memory-card">
+            <div class="memory-card-inner">
+              <div class="memory-card-front">
+                <div class="memory-emoji" id="mc-emoji">💫</div>
+              </div>
+              <div class="memory-card-back">
+                <div class="memory-content">
+                  <div class="memory-title" id="mc-title"></div>
+                  <div class="memory-text" id="mc-text"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-progress">
+          <span id="gallery-viewed">0</span>/<span id="gallery-total">8</span> memories found
+        </div>
+        <button class="page-btn hidden" id="c3-complete" aria-label="Complete this chapter">
+          ✨ A New Star Appears
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  SCREEN: CHAPTER 4 — The Secret Garden                 -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="screen-chapter-4" class="screen chapter-screen hidden" data-screen="chapter-4">
+    <canvas class="chapter-bg-canvas" id="c4-canvas"></canvas>
+    <div class="chapter-container">
+      <div class="chapter-header">
+        <button class="back-to-map" aria-label="Return to star map">← Back to Stars</button>
+        <div class="chapter-badge">Chapter IV</div>
+      </div>
+
+      <div class="chapter-intro" id="c4-intro">
+        <h2 class="chapter-title">The Secret Garden</h2>
+        <p class="chapter-description">Hidden in this garden are 5 secret flowers, each carrying a hidden message.<br>Can you find them all?</p>
+        <div class="chapter-icon">🌷</div>
+        <button class="page-btn" id="c4-start" aria-label="Enter the garden">Enter ›</button>
+      </div>
+
+      <div class="secret-garden hidden" id="secret-garden">
+        <div class="garden-scene" id="garden-scene">
+          <div class="garden-bg-img"></div>
+          <div class="garden-items" id="garden-items">
+            <!-- Flowers placed by JS -->
+          </div>
+          <div class="garden-hint">
+            <span id="garden-hint-text">🔍 Explore the garden... secrets are hidden everywhere</span>
+          </div>
+        </div>
+        <div class="garden-progress-bar">
+          <div class="garden-found-text">Secrets found: <span id="garden-found">0</span>/5</div>
+          <div class="garden-bar-outer">
+            <div class="garden-bar-inner" id="garden-bar-inner"></div>
+          </div>
+        </div>
+        <div class="secret-message-panel hidden" id="secret-message-panel">
+          <div class="secret-message-inner">
+            <div class="secret-flower-emoji" id="secret-flower-emoji">🌸</div>
+            <div class="secret-message-title" id="secret-message-title"></div>
+            <div class="secret-message-text" id="secret-message-text"></div>
+            <button class="choice-btn" id="close-secret-message" aria-label="Close message">Close 🌸</button>
+          </div>
+        </div>
+        <button class="page-btn hidden" id="c4-complete" aria-label="Complete this chapter">
+          ✨ A New Star Appears
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  SCREEN: CHAPTER 5 — What I Love About You             -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="screen-chapter-5" class="screen chapter-screen hidden" data-screen="chapter-5">
+    <canvas class="chapter-bg-canvas" id="c5-canvas"></canvas>
+    <div class="chapter-container">
+      <div class="chapter-header">
+        <button class="back-to-map" aria-label="Return to star map">← Back to Stars</button>
+        <div class="chapter-badge">Chapter V</div>
+      </div>
+
+      <div class="chapter-intro" id="c5-intro">
+        <h2 class="chapter-title">What I Love About You</h2>
+        <p class="chapter-description">I made a little puzzle — each piece reveals something I love about you.<br>Tap each piece to reveal it.</p>
+        <div class="chapter-icon">💖</div>
+        <button class="page-btn" id="c5-start" aria-label="Start the love list">Begin ›</button>
+      </div>
+
+      <div class="love-puzzle hidden" id="love-puzzle">
+        <h2 class="love-puzzle-title">Things I Love About You</h2>
+        <div class="love-grid" id="love-grid"></div>
+        <div class="love-progress">
+          <span id="love-revealed">0</span>/<span id="love-total">12</span> discovered
+        </div>
+        <button class="page-btn hidden" id="c5-complete" aria-label="Complete this chapter">
+          ✨ A New Star Appears
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  SCREEN: CHAPTER 6 — Forever (The Final Letter)        -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="screen-chapter-6" class="screen chapter-screen hidden" data-screen="chapter-6">
+    <canvas class="chapter-bg-canvas" id="c6-canvas"></canvas>
+    <div class="chapter-container finale-container">
+      <div class="chapter-header">
+        <button class="back-to-map" aria-label="Return to star map">← Back to Stars</button>
+        <div class="chapter-badge">∞</div>
+      </div>
+
+      <div class="chapter-intro" id="c6-intro">
+        <h2 class="chapter-title">Forever</h2>
+        <p class="chapter-description">You've traveled through all our stars.<br>This is where I've been waiting for you.</p>
+        <div class="chapter-icon">💌</div>
+        <button class="page-btn" id="c6-start" aria-label="Read the final letter">Read My Letter ›</button>
+      </div>
+
+      <div class="finale-content hidden" id="finale-content">
+        <div class="finale-letter-container">
+          <div class="finale-letter" id="finale-letter">
+            <div class="finale-letter-header">
+              <div class="finale-letter-date">To My Universe,</div>
+            </div>
+            <div class="finale-letter-body" id="finale-letter-body"></div>
+            <div class="finale-letter-footer">
+              <div class="finale-footer-text">With every star in the sky,</div>
+              <div class="finale-signature">Your love 💫</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="finale-fireworks" id="finale-fireworks"></div>
+
+        <div class="finale-wish hidden" id="finale-wish">
+          <div class="wish-balloon">🎈</div>
+          <h3 class="wish-title">Happy Girlfriend's Day! 🎉</h3>
+          <p class="wish-subtitle">Thank you for being my favourite constellation in the universe.</p>
+          <div class="wish-hearts" id="wish-hearts"></div>
+          <button class="page-btn" id="view-all-achievements" aria-label="View all your achievements">
+            ⭐ See Your Stars
+          </button>
+          <button class="page-btn btn-secondary" id="restart-journey" aria-label="Restart the journey">
+            🔄 Revisit Our Story
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JS -->
+  <script src="js/utils.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/achievements.js"></script>
+  <script src="js/starmap.js"></script>
+  <script src="js/chapters.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
