@@ -62,16 +62,33 @@ function typewriter(element, text, opts = {}) {
     cursor.style.cssText = 'opacity:1;animation:dotBlink 0.7s step-end infinite;color:var(--rose-gold)';
     element.appendChild(cursor);
 
+    const tick = () => {/** Typewriter effect — types text into an element */
+function typewriter(element, text, opts = {}) {
+  const {
+    speed = 18,
+    delay = 0,
+    onDone = null,
+    cursorChar = '▍',
+  } = opts;
+
+  return new Promise(resolve => {
+    let i = 0;
+
+    element.textContent = '';
+
+    const textNode = document.createTextNode('');
+    const cursor = document.createElement('span');
+
+    cursor.textContent = cursorChar;
+    cursor.style.cssText = 'opacity:1;animation:dotBlink 0.7s step-end infinite;color:var(--rose-gold)';
+
+    element.appendChild(textNode);
+    element.appendChild(cursor);
+
     const tick = () => {
       if (i < text.length) {
-        currentText += text[i];
+        textNode.nodeValue += text[i];
         i++;
-
-        cursor.previousSibling?.remove();
-        element.insertBefore(
-          document.createTextNode(currentText),
-          cursor
-        );
 
         setTimeout(tick, speed);
       } else {
@@ -83,7 +100,7 @@ function typewriter(element, text, opts = {}) {
 
     setTimeout(tick, delay);
   });
-}v
+}
 
 /** Create element with attributes and content */
 function el(tag, attrs = {}, children = []) {
