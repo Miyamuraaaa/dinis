@@ -45,14 +45,16 @@ const Store = {
 /** Typewriter effect — types text into an element */
 function typewriter(element, text, opts = {}) {
   const {
-    speed      = 18,
-    delay      = 0,
-    onDone     = null,
+    speed = 18,
+    delay = 0,
+    onDone = null,
     cursorChar = '▍',
   } = opts;
 
   return new Promise(resolve => {
     let i = 0;
+    let currentText = '';
+
     element.textContent = '';
 
     const cursor = document.createElement('span');
@@ -62,10 +64,16 @@ function typewriter(element, text, opts = {}) {
 
     const tick = () => {
       if (i < text.length) {
-        cursor.before(document.createTextNode(text[i]));
+        currentText += text[i];
         i++;
-        const jitter = speed + (Math.random() * 20 - 10);
-        setTimeout(tick, Math.max(10, jitter));
+
+        cursor.previousSibling?.remove();
+        element.insertBefore(
+          document.createTextNode(currentText),
+          cursor
+        );
+
+        setTimeout(tick, speed);
       } else {
         cursor.remove();
         onDone?.();
@@ -75,7 +83,7 @@ function typewriter(element, text, opts = {}) {
 
     setTimeout(tick, delay);
   });
-}
+}v
 
 /** Create element with attributes and content */
 function el(tag, attrs = {}, children = []) {
