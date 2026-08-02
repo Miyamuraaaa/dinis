@@ -153,13 +153,13 @@ const App = (() => {
 
       envelope.classList.add('open');
 
-      await wait(900); // wait for envelope open animation
+      await wait(200); // wait for envelope open animation
 
       // Type the letter
       const TEXT = "I made something for you. Not because I had to — because you deserve something that took time and love to make. Take your time. Explore everything. And know that every word here was written with you in mind.";
 
       if (typeEl) {
-        await typewriter(typeEl, TEXT, { speed: 40, delay: 200 });
+        await typewriter(typeEl, TEXT, { speed: 4, delay: 50 });
       }
 
       if (sig) show(sig, 'anim-fade-in');
