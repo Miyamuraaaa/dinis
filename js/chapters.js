@@ -11,20 +11,20 @@ const Chapter1 = (() => {
   let bgAnim = null;
   let currentChoice = null;
 
-  const INTRO_TEXT = "There is a moment — just one — that changed everything. I didn't know it then. I was just going about my ordinary day, and then you appeared, and the ordinary became extraordinary.";
+  const INTRO_TEXT = "I'm not good with words in the moment — I get quiet when I feel the most. But I remember when things started to shift. It wasn't loud. It wasn't dramatic. It was just… you. And suddenly, the ordinary days didn't feel so ordinary anymore. There was a warmth I couldn't explain — like I'd been waiting for you without even knowing it.";
 
   const CHOICE_RESPONSES = {
     a: {
-      art: "😊✨",
-      text: "Your smile — I noticed it too. It's the kind of smile that makes a room feel warmer. The kind that I find myself thinking about days later, hoping to see again.",
+      art: "🌷💛",
+      text: "Your smile — I noticed it. It's the kind that reaches your eyes. I still catch myself hoping to see it, even on your hardest days.",
     },
     b: {
-      art: "🦋💫",
-      text: "Nervous but happy — that's exactly what you do to me. Even now. There's something about you that makes my heart skip in the most beautiful way.",
+      art: "🫶✨",
+      text: "Nervous but happy — that's exactly what you do to me. Every time. There's something about you that makes my heart skip.",
     },
     c: {
-      art: "🌟💭",
-      text: "That secret hope — it's the best kind. The universe has a way of making those happen. And here we are. I'm so glad we spoke again.",
+      art: "🌙💫",
+      text: "That secret hope — it was you. And here we are. I'm so grateful I stayed.",
     },
   };
 
@@ -138,25 +138,25 @@ const Chapter2 = (() => {
   let isLocked = false;
 
   const CARDS = [
-    { id: "a", emoji: "☕", label: "Morning coffee" },
+    { id: "a", emoji: "👀", label: "The way you look at me" },
     { id: "b", emoji: "🌙", label: "Late night talks" },
     { id: "c", emoji: "🎵", label: "Our song" },
     { id: "d", emoji: "🌸", label: "Cherry blossoms" },
     { id: "e", emoji: "📚", label: "Reading together" },
-    { id: "f", emoji: "🌟", label: "Stargazing" },
+    { id: "f", emoji: "📞", label: "Late night calls" },
     { id: "g", emoji: "🍜", label: "Our favourite meal" },
     { id: "h", emoji: "🤝", label: "Hand in hand" },
   ];
 
   const MESSAGES = {
-    a: "The way you hold a cup with both hands — it's the softest thing.",
-    b: "The conversations that go on too long and not long enough.",
-    c: "That one song that became ours without either of us deciding.",
-    d: "Spring reminds me of you. Soft, beautiful, and full of promise.",
-    e: "Side by side in comfortable silence — that's my favourite place.",
-    f: "Looking up together and feeling small — but not alone.",
-    g: "The way food tastes better when you're across the table.",
-    h: "Your hand in mine. Everything is easier like that.",
+    a: "The way you look at me makes me wish time would stop. It's one of those moments I never want to end.",
+    b: "The conversations that go on too long—and somehow still never feel long enough.",
+    c: "That one song that slowly became ours. Now every time it plays, it always brings me back to you.",
+    d: "You remind me of spring. Gentle, beautiful, and the reason everything feels a little brighter.",
+    e: "Even when we're just reading together in silence, it feels peaceful because it's with you.",
+    f: "We're miles apart, but every late night call makes the distance disappear, even if it's only for a little while.",
+    g: "Food always tastes better when you're sitting across from me. I never remember what we ate—only that you were there.",
+    h: "Your hand in mine. It says 'I'm here,' and somehow that's all I ever need.",
   };
 
   function init() {
@@ -290,15 +290,47 @@ const Chapter3 = (() => {
   let viewedCount = 0;
 
   const MEMORIES = [
-    { emoji: "🌅", title: "Golden Hour", text: "That evening when the sky turned rose gold and we just sat and watched. No phones, no plans. Just us and the fading light." },
-    { emoji: "🎉", title: "Your Laugh",  text: "The laugh you do when something catches you off guard — head tilted back, eyes crinkled. It's my favourite sound in the world." },
-    { emoji: "🌧️", title: "Rainy Days",  text: "Rainy days became something I look forward to, because they mean staying in together. Wrapped up, warm, and perfectly still." },
-    { emoji: "📱", title: "The Texts",   text: "The 'good morning' texts. The random memes. The 'are you okay?' at midnight. Those tiny messages carry so much love." },
-    { emoji: "🍕", title: "Late Night Snacks", text: "Nothing ever tasted better than food at 1am with you. Greasy, ridiculous, perfect." },
-    { emoji: "🤗", title: "Your Hugs",   text: "The kind of hug where I don't want to let go. Where the world goes quiet and everything feels exactly right." },
-    { emoji: "✈️", title: "Adventures",  text: "Every adventure with you — even the ones that went 'wrong' — became the best stories." },
-    { emoji: "💤", title: "Sleepy You",  text: "You when you're almost asleep — soft, peaceful, and completely yourself. That's when I fall in love all over again." },
-  ];
+  {
+    emoji: "🎬",
+    title: "Cinema Day",
+    text: "I still think about the time we went to the cinema together. I wasn't paying attention to the movie as much as I was paying attention to you. I remember wishing time would just stop right there, because being beside you was all I wanted."
+  },
+  {
+    emoji: "😂",
+    title: "Your Laugh",
+    text: "Your laugh will always be my favourite sound. The way you laugh when something catches you off guard, the way your smile gets bigger without you noticing—it never fails to make my day better."
+  },
+  {
+    emoji: "💬",
+    title: "Late Night Calls",
+    text: "Even though we're miles apart, talking to you at the end of the day makes the distance disappear for a while. Those conversations are some of my favourite memories."
+  },
+  {
+    emoji: "📱",
+    title: "Our Messages",
+    text: "The random updates, the good mornings, the good nights, the 'ingat ka,' the little jokes—we probably don't realize it, but those messages became one of my favourite parts of every day."
+  },
+  {
+    emoji: "🍜",
+    title: "Eating Together",
+    text: "It never really mattered what we were eating. Somehow every meal felt better because it was with you. I'd choose those simple moments over anything fancy."
+  },
+  {
+    emoji: "🤍",
+    title: "Your Hugs",
+    text: "Every hug from you feels like the safest place in the world. For a few seconds, everything else disappears, and all I want is for that moment to last a little longer."
+  },
+  {
+    emoji: "🌍",
+    title: "Travelling Together",
+    text: "One day we'll finally travel together. New cities, new food, new places—but my favourite part won't be the destination. It'll just be experiencing everything with you."
+  },
+  {
+    emoji: "🌙",
+    title: "Sleepy You",
+    text: "I love the version of you that's almost asleep. Quiet, comfortable, and completely yourself. It's one of those little moments that always reminds me how lucky I am."
+  },
+];
 
   const POSITIONS = [
     { top: "15%", left: "20%" }, { top: "10%", left: "55%" },
@@ -423,12 +455,42 @@ const Chapter4 = (() => {
   let foundCount = 0;
 
   const FLOWERS = [
-    { emoji: "🌸", x: "15%", y: "25%", title: "The Way You Care", msg: "You check in on the people you love — quietly, consistently, without expecting anything back. That kind of love is rare." },
-    { emoji: "🌹", x: "55%", y: "15%", title: "Your Kindness",    msg: "I've watched you be kind when no one was watching. That's the truest kind of beautiful." },
-    { emoji: "🌻", x: "75%", y: "45%", title: "Your Strength",    msg: "You carry so much, so gracefully. I hope you know how strong you really are — and how much that strength moves me." },
-    { emoji: "🌺", x: "30%", y: "65%", title: "You Being You",    msg: "Your little quirks. Your specific way of seeing the world. There is nobody like you, and I never want anyone else." },
-    { emoji: "💐", x: "70%", y: "75%", title: "Our Future",       msg: "I think about the life we'll build. The mornings, the adventures, the quiet evenings. I can't wait for all of it — with you." },
-  ];
+  {
+    emoji: "👧",
+    x: "15%",
+    y: "25%",
+    title: "The Ate",
+    msg: "I admire the way you carry so much on your shoulders. Being the oldest isn't easy, yet you continue showing up for everyone. I just hope you remember that you don't always have to be the strong one. You deserve to be taken care of too."
+  },
+  {
+    emoji: "👭",
+    x: "55%",
+    y: "15%",
+    title: "For Ainna",
+    msg: "The way you love Ainna is one of the most beautiful things about you. It's selfless, patient, and unconditional. I know you'd do anything for her, and seeing that side of you only makes me love you even more."
+  },
+  {
+    emoji: "🌙",
+    x: "75%",
+    y: "45%",
+    title: "The Overthinker",
+    msg: "I know there are nights when your mind refuses to rest. I may not always know the right words, and I can't make those thoughts disappear, but I hope you know you'll never have to face them alone. I'll always stay beside you."
+  },
+  {
+    emoji: "💬",
+    x: "30%",
+    y: "65%",
+    title: "Mahal",
+    msg: "Every time you call me 'mahal,' I swear my heart melts a little. It's such a simple word, yet when it comes from you, it somehow carries all the warmth, comfort, and love in the world."
+  },
+  {
+    emoji: "🌍",
+    x: "70%",
+    y: "75%",
+    title: "Our Future",
+    msg: "One day we'll finally travel together. We'll visit places we've only talked about, make memories we'll tell for years, and laugh over the little things. No matter where life takes us, my favourite destination will always be wherever you are."
+  },
+];
 
   function init() {
     const canvas = document.getElementById("c4-canvas");
@@ -558,19 +620,55 @@ const Chapter5 = (() => {
   let revealed = new Set();
 
   const LOVE_ITEMS = [
-    { cover: "😊", text: "The way your eyes crinkle when you smile for real — not the polite smile, the real one." },
-    { cover: "🎵", text: "How you hum along to songs without realising you're doing it." },
-    { cover: "💬", text: "The way you listen. Fully. Like what I'm saying actually matters." },
-    { cover: "🌙", text: "That you're still interesting to me. Every conversation, every day." },
-    { cover: "🤗", text: "How you make people feel seen. It's your superpower." },
-    { cover: "📚", text: "Your mind. The way you think, question, and wonder about everything." },
-    { cover: "🧠", text: "You're the smartest person I know — but you wear it so gently." },
-    { cover: "🌸", text: "The softness in you. The tenderness you try to hide but can't." },
-    { cover: "✨", text: "The way you make ordinary moments feel like they matter." },
-    { cover: "💪", text: "Your resilience. You keep going. I admire that more than you know." },
-    { cover: "🎨", text: "Your creativity and the way you see beauty in unexpected places." },
-    { cover: "💖", text: "Simply this: being loved by you is the greatest gift I have ever been given." },
-  ];
+  {
+    cover: "👧",
+    text: "The way you carry the weight of being the oldest without ever asking for recognition. You always put everyone else first, and I hope you know it's okay to let someone take care of you too."
+  },
+  {
+    cover: "👭",
+    text: "The way you love Ainna. Patiently, selflessly, and with your whole heart. Watching you care for her makes me admire you more than you'll ever know."
+  },
+  {
+    cover: "😢",
+    text: "The fact that you've gone through things that should've broken you, yet you still choose kindness. You're still here, still trying, still loving. That's one of the strongest things I've ever seen."
+  },
+  {
+    cover: "🌙",
+    text: "Your overthinking mind. I know it keeps you awake some nights, and I wish I could quiet every fear for you. Until then, I'll just keep reminding you that you never have to carry everything alone."
+  },
+  {
+    cover: "💬",
+    text: "The way you call me 'mahal.' It's such a simple word, yet somehow every time you say it, it feels brand new. I'll never get tired of hearing it."
+  },
+  {
+    cover: "🎒",
+    text: "Your strength. You balance family, school, responsibilities, and still somehow find time to ask me if I'm okay. That's the kind of love I'll never take for granted."
+  },
+  {
+    cover: "😂",
+    text: "Your laugh. Especially the one that comes out when you aren't expecting to laugh. If I could spend my whole life trying to hear that sound, I'd happily do it."
+  },
+  {
+    cover: "📝",
+    text: "The way you care so deeply. Sometimes it makes you overthink, sometimes it hurts you—but it's also what makes your heart so beautiful."
+  },
+  {
+    cover: "🤍",
+    text: "The way you've slowly let me into your world. Piece by piece, story by story, fear by fear. Thank you for trusting me with the parts of you that not everyone gets to see."
+  },
+  {
+    cover: "☀️",
+    text: "Your determination. Even when life gets unfair, even when you're exhausted, you still keep moving forward. I hope you know how inspiring that is."
+  },
+  {
+    cover: "🌍",
+    text: "The future we always talk about. Travelling together, making memories in places we've never been, and growing older side by side. I can't wait for that chapter of our story."
+  },
+  {
+    cover: "💖",
+    text: "Most of all, I love you. Not just the happy version of you, but every version. The tired one, the overthinking one, the quiet one, the emotional one. Being loved by you is the greatest gift I've ever received, and I'll never stop choosing you."
+  },
+];
 
   function init() {
     const canvas = document.getElementById("c5-canvas");
@@ -683,15 +781,67 @@ const Chapter6 = (() => {
   let bgAnim = null;
 
   const LETTER_PARAGRAPHS = [
-    { type: "p", text: "You made it." },
-    { type: "p", text: "You traveled through all our stars — the moment we met, the little things that made me fall, the memories I hold close, the secrets of my heart, and every word I struggle to say out loud." },
-    { type: "highlight", text: "All of it was for you." },
-    { type: "p", text: "I'm not always good with words in the moment. I get quiet when I feel the most. But I want you to know — I think about how lucky I am. A lot. More than I show." },
-    { type: "p", text: "You are the person I want to tell things to first. You're the one whose voice I want to hear when a day is hard. You make everything — the ordinary, the difficult, the mundane — better, just by being in it." },
-    { type: "highlight", text: "You are my favourite thing about my life." },
-    { type: "p", text: "Happy Girlfriend's Day — though honestly, every day I get with you feels like a celebration." },
-    { type: "p", text: "Thank you for being you. Don't ever change." },
-  ];
+  {
+    type: "p",
+    text: "You made it."
+  },
+  {
+    type: "p",
+    text: "If you're reading this, then you've walked through every little piece of my heart that I could put into this website. Every chapter, every message, every little interaction was made with one person in mind—you."
+  },
+  {
+    type: "highlight",
+    text: "Every click was another way of saying, 'I love you.'"
+  },
+  {
+    type: "p",
+    text: "I'm not always the best at expressing what I feel. You already know that. Most of the time, I get quiet when my heart is the loudest. That's why I made this instead. I wanted you to have something you could come back to whenever you needed a reminder of how deeply you're loved."
+  },
+  {
+    type: "p",
+    text: "I know life hasn't always been kind to you. I know you've carried responsibilities that weren't meant for someone your age. You've had nights where your mind wouldn't let you rest, moments where you questioned yourself, and days where you felt like you had to be strong for everyone else."
+  },
+  {
+    type: "highlight",
+    text: "But please, never forget this: you never have to be strong all the time."
+  },
+  {
+    type: "p",
+    text: "You are not difficult to love. You are not 'too much.' You are not a burden. You're simply someone who has been through more than most people realize, and despite all of that, you still choose kindness. You still choose to love. That's one of the bravest things I've ever witnessed."
+  },
+  {
+    type: "p",
+    text: "I admire the way you take care of Ainna, the way you continue showing up for your family, and the way you always find the time to ask if I'm okay even when you're carrying so much yourself. I notice those things. I always will."
+  },
+  {
+    type: "highlight",
+    text: "You deserve the same love that you give so freely to everyone else."
+  },
+  {
+    type: "p",
+    text: "Thank you for trusting me with your heart. Thank you for letting me see the parts of you that the rest of the world doesn't. The happy moments, the overthinking, the quiet nights, the tears, the laughter—every version of you has become my favourite."
+  },
+  {
+    type: "p",
+    text: "I know we're still young, and there's so much life waiting for us. We'll probably make mistakes, learn new things, and grow in ways we can't even imagine yet. But one thing I hope never changes is that, no matter where life takes us, we keep choosing each other."
+  },
+  {
+    type: "highlight",
+    text: "One day, we'll finally travel together—not because the place matters, but because we'll be there together."
+  },
+  {
+    type: "p",
+    text: "Whether we're watching another movie, eating somewhere new, laughing over something completely stupid, or simply sitting beside each other in comfortable silence, I know those ordinary moments will become my favourite memories."
+  },
+  {
+    type: "p",
+    text: "Happy Girlfriend's Day, mahal. Thank you for loving me, for believing in us, and for being the incredible woman that you are. I hope this little project reminds you, even for just a moment, how truly special you are to me."
+  },
+  {
+    type: "highlight",
+    text: "I love you. Yesterday, today, tomorrow, and every day after that. Always."
+  },
+];
 
   function init() {
     const canvas = document.getElementById("c6-canvas");
