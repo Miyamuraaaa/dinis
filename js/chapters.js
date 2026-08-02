@@ -733,7 +733,7 @@ const Chapter6 = (() => {
       if (para.type === "highlight") p.className = "highlight";
       bodyEl.appendChild(p);
 
-      await typewriter(p, para.text, { speed: 15 });
+      await typewriter(p, para.text, { speed: 18 });
       await wait(200);
     }
 
