@@ -42,27 +42,7 @@ const Store = {
   },
 };
 
-/** Typewriter effect — types text into an element */
-function typewriter(element, text, opts = {}) {
-  const {
-    speed = 18,
-    delay = 0,
-    onDone = null,
-    cursorChar = '▍',
-  } = opts;
-
-  return new Promise(resolve => {
-    let i = 0;
-    let currentText = '';
-
-    element.textContent = '';
-
-    const cursor = document.createElement('span');
-    cursor.textContent = cursorChar;
-    cursor.style.cssText = 'opacity:1;animation:dotBlink 0.7s step-end infinite;color:var(--rose-gold)';
-    element.appendChild(cursor);
-
-    const tick = () => {/** Typewriter effect — types text into an element */
+/** Typewriter effect — optimized */
 function typewriter(element, text, opts = {}) {
   const {
     speed = 18,
@@ -77,26 +57,33 @@ function typewriter(element, text, opts = {}) {
     element.textContent = '';
 
     const textNode = document.createTextNode('');
+    
     const cursor = document.createElement('span');
-
     cursor.textContent = cursorChar;
-    cursor.style.cssText = 'opacity:1;animation:dotBlink 0.7s step-end infinite;color:var(--rose-gold)';
+    cursor.style.cssText =
+      'opacity:1;animation:dotBlink 0.7s step-end infinite;color:var(--rose-gold)';
 
     element.appendChild(textNode);
     element.appendChild(cursor);
 
-    const tick = () => {
+
+    function tick() {
       if (i < text.length) {
+
         textNode.nodeValue += text[i];
         i++;
 
         setTimeout(tick, speed);
+
       } else {
+
         cursor.remove();
-        onDone?.();
+
+        if (onDone) onDone();
+
         resolve();
       }
-    };
+    }
 
     setTimeout(tick, delay);
   });
