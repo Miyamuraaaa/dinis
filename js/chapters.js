@@ -38,7 +38,7 @@ const Chapter1 = (() => {
     // Start typewriter on page 1
     const storyEl = document.getElementById("c1-story-1");
     if (storyEl) {
-      typewriter(storyEl, INTRO_TEXT, { speed: 4, delay: 50, onDone: () => {
+      typewriter(storyEl, INTRO_TEXT, { speed: 18, delay: 50, onDone: () => {
         const btn = document.getElementById("c1-next-1");
         if (btn) show(btn, "anim-fade-in-up");
         Achievements.unlock("first_star");
@@ -102,7 +102,7 @@ const Chapter1 = (() => {
     const artEl = document.getElementById("choice-response-art");
     const textEl = document.getElementById("c1-choice-response");
     if (artEl) artEl.textContent = data.art;
-    if (textEl) typewriter(textEl, data.text, { speed: 4, onDone: () => {
+    if (textEl) typewriter(textEl, data.text, { speed: 18, onDone: () => {
       const btn = document.getElementById("c1-next-3");
       if (btn) show(btn, "anim-fade-in-up");
     }});
@@ -733,7 +733,7 @@ const Chapter6 = (() => {
       if (para.type === "highlight") p.className = "highlight";
       bodyEl.appendChild(p);
 
-      await typewriter(p, para.text, { speed: 4 });
+      await typewriter(p, para.text, { speed: 18 });
       await wait(200);
     }
 
