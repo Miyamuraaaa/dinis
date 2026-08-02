@@ -45,7 +45,7 @@ const Store = {
 /** Typewriter effect — optimized */
 function typewriter(element, text, opts = {}) {
   const {
-    speed = 4,
+    speed = 18,
     delay = 0,
     onDone = null,
     cursorChar = '▍',
