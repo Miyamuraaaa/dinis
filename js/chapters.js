@@ -11,7 +11,7 @@ const Chapter1 = (() => {
   let bgAnim = null;
   let currentChoice = null;
 
-  const INTRO_TEXT = "I'm not good with words in the moment — I get quiet when I feel the most. But I remember when things started to shift. It wasn't loud. It wasn't dramatic. It was just… you. And suddenly, the ordinary days didn't feel so ordinary anymore. There was a warmth I couldn't explain — like I'd been waiting for you without even knowing it.";
+  const INTRO_TEXT = "I'm not good with words in the moment — I get quiet when I feel the most. But I remember when things started to shift. It wasn't loud. It wasn't dramatic. It was just yk, you. And suddenly, the ordinary days didn't feel so ordinary anymore. There was a warmth I couldn't explain — like I'd been waiting for you without even knowing it.";
 
   const CHOICE_RESPONSES = {
     a: {
@@ -24,7 +24,7 @@ const Chapter1 = (() => {
     },
     c: {
       art: "🌟💭",
-      text: "That secret hope — it was you. And here we are. I'm so grateful I stayed.",
+      text: "That secret hope — it was you. And here we are.",
     },
   };
 
@@ -291,13 +291,13 @@ const Chapter3 = (() => {
 
   const MEMORIES = [
     { emoji: "🎬", title: "The Cinema", text: "Sitting beside you in that theater, I remember wishing the movie would never end — not because of what was on the screen, but because it meant I got to be next to you. If I could stop time anywhere, it'd be there." },
-    { emoji: "🎉", title: "Your Laugh",  text: "The laugh you do when something catches you off guard — head tilted back, eyes crinkling. It's my favourite sound. I'd do anything to hear it more." },
+    { emoji: "🎉", title: "Your Laugh",  text: "The laugh you do when something catches you off guard." },
     { emoji: "🌧️", title: "Rainy Days",  text: "Whenever it rains, I wonder what you're doing. I hope you're warm, safe, and smiling. One day, we'll listen to the rain together instead of from different places." },
-    { emoji: "📱", title: "The Messages", text: "The 'good morning' texts. The random memes. The 'are you okay?' at midnight. They're small — but they're everything." },
+    { emoji: "📱", title: "The Messages", text: "Every chika and random moments." },
     { emoji: "🍕", title: "Late Night Cravings", text: "Even when we're eating miles apart, I still catch myself wishing you were sitting across from me. One day, every late-night meal will be together." },
     { emoji: "🤗", title: "Your Hugs",   text: "The kind of hug where I don't want to let go. Where the world goes quiet and everything feels exactly right." },
     { emoji: "✈️", title: "Amsterdam",  text: "The dream we painted together — windmills, canals, freedom. We haven't made it yet. But we will. And it'll be everything." },
-    { emoji: "💤", title: "Sleepy You",  text: "You when you're almost asleep — soft, quiet, vulnerable. Walls down. Just you. That's when I fall in love all over again." },
+    { emoji: "💤", title: "Sleepy You",  text: "You, wala lang, love lang kita" },
   ];
 
   const POSITIONS = [
@@ -423,11 +423,11 @@ const Chapter4 = (() => {
   let foundCount = 0;
 
   const FLOWERS = [
-    { emoji: "👧", x: "15%", y: "25%", title: "The Ate", msg: "The way you carry the weight of being the oldest — quietly, bravely, without complaining. You don't have to be strong all the time." },
+    { emoji: "👧", x: "15%", y: "25%", title: "The Ate", msg: "The way you carry the weight of being the oldest. hugss mahall, remember ha, you don't have to be strong all the time." },
     { emoji: "👭", x: "55%", y: "15%", title: "For Ainna", msg: "How you love your sister. Selflessly. Fiercely. Even when it breaks you. That love is the purest thing I've ever seen." },
     { emoji: "🌙", x: "75%", y: "45%", title: "The Overthinker", msg: "The nights you can't sleep because your mind won't stop. I can't take those thoughts away. But I'll stay awake with you. Always." },
-    { emoji: "💬", x: "30%", y: "65%", title: "The Way You Speak", msg: "The way you say 'mahal' — like it's the softest word in the world. It makes my chest ache every time." },
-    { emoji: "💐", x: "70%", y: "75%", title: "The Future", msg: "Amsterdam. The sports car. The baby names we argued about. I can't wait for all of it — with you." },
+    { emoji: "💬", x: "30%", y: "65%", title: "The Way You Speak", msg: "The way you say 'mahal' — like it's the softest word in the world." },
+    { emoji: "💐", x: "70%", y: "75%", title: "The Future", msg: "Travelling togetherr, and si Goku The Universe Destroyer." },
   ];
 
   function init() {
@@ -558,17 +558,17 @@ const Chapter5 = (() => {
   let revealed = new Set();
 
   const LOVE_ITEMS = [
-    { cover: "👧", text: "The way you carry the weight of being the oldest — quietly, bravely, without complaining. You don't have to be strong all the time, love." },
+    { cover: "👧", text: "The way you carry the weight of being the oldest. Hugss mahall, remember ha, you don't have to be strong all the time, love." },
     { cover: "👭", text: "How you love your sister Ainna. Selflessly. Fiercely. Even when it breaks you. That love is the purest thing I've ever seen." },
     { cover: "😢", text: "You've been through more than most people realize, yet you still choose kindness and love. Your strength inspires me every day." },
     { cover: "🌙", text: "The nights you can't sleep because your mind won't stop running. I can't take those thoughts away. But I'll stay awake with you. Always." },
-    { cover: "💬", text: "The way you say 'mahal' — like it's the softest word in the world. It makes my chest ache every single time." },
-    { cover: "🎒", text: "Your strength. You carry so much — family, school, expectations — and you still find time to check on me. That's not just love. That's devotion." },
+    { cover: "💬", text: "The way you say 'mahal' — like it's the softest word in the world." },
+    { cover: "🎒", text: "Your strength. You carry so much — family, school, expectations — and you still find time to check on me." },
     { cover: "🌸", text: "Your laugh. The one that escapes when you're caught off guard. It's my favourite sound — and I'm always trying to earn it." },
     { cover: "📝", text: "That you overthink. I know it exhausts you — but it also means you care deeply. And that's something I'll never take for granted." },
     { cover: "🤝", text: "The way you're learning to let me in. Slowly. Messily. It's not perfect — but it's real. And that's all I've ever wanted." },
     { cover: "☀️", text: "Your persistence. Even when you want to give up — you don't. You keep going. For Ainna. For your family. For us. I see it. And I'm in awe of you." },
-    { cover: "💭", text: "The future we dream about — Amsterdam, the sports car, the baby names we argued about. I can't wait to live all of it with you." },
+    { cover: "💭", text: "The future we dream about — Travelling togetherr, and si Goku The Universe Destroyer." },
     { cover: "💖", text: "Being loved by you — the real you, the messy, tired, overthinking, beautiful you — is the greatest gift I have ever received." },
   ];
 
@@ -694,8 +694,7 @@ const Chapter6 = (() => {
     { type: "p", text: "You are not a burden. You are not defined by the things people misunderstand about you. You are someone who has been hurt — and you're still choosing to love. That's the bravest thing I've ever seen." },
     { type: "highlight", text: "You are my favourite person. My home. My always." },
     { type: "p", text: "Happy Girlfriend's Day, love. But honestly — every day I get with you feels like a celebration." },
-    { type: "p", text: "Thank you for being you. Don't ever change. Don't ever stop." },
-    { type: "highlight", text: "I love you. Always. No conditions. No end." },
+    { type: "highlight", text: "Thank you for being you, I love you :))" },
   ];
 
   function init() {
